@@ -1,4 +1,4 @@
-otimize este codigo para que consiga funcionar no arduino sem ultrapassar o limite de memoria ram:
+
 //made by ~ Henrique
 const int C2 = 65;
 const int Db2 = 69;
