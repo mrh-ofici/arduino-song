@@ -1,5 +1,5 @@
-
 //made by ~ Henrique
+
 const int C2 = 65;
 const int Db2 = 69;
 const int D2 = 73;
@@ -62,36 +62,37 @@ const int Bb6 = 1865;
 const int B6 = 1976;
 
  
-const int buzzerPin = 8;
-const int ledPin1 = 12;
-const int ledPin2 = 13;
+
  
 int counter = 0;
+int buzzer = 6;
+ 
+
+ 
+ 
 void beep(int note, int duration)
 {
-  //Play tone on buzzerPin
-  tone(buzzerPin, note, duration);
+  
+  tone(buzzer, note, duration);
  
- 
-  //Play different LED depending on value of 'counter'
   if(counter % 2 == 0)
   {
-    digitalWrite(ledPin1, HIGH);
+    
     delay(duration);
-    digitalWrite(ledPin1, LOW);
+    ;
   }else
   {
-    digitalWrite(ledPin2, HIGH);
+    
     delay(duration);
-    digitalWrite(ledPin2, LOW);
+    
   }
  
-  //Stop tone on buzzerPin
-  noTone(buzzerPin);
+  
+  noTone(buzzer);
  
   delay(50);
  
-  //Increment counter
+  
   counter++;
 }
  
@@ -296,7 +297,7 @@ void thirdSection()
 #define NOTE_DS8 4978
 #define REST      0
 int tempo = 114;
-int buzzer = 6;
+
 int button1 = 2;
 int button2 = 3;
 int button3 = 4;
@@ -310,11 +311,11 @@ int melodia[] = {660,660,660,510,660,770,380,510,380,320,440,480,450,430,380,660
 int duracaodasnotas[] = {100,100,100,100,100,100,100,100,100,100,100,80,100,100,100,80,50,100,80,50,80,80,80,80,100,100,100,100,80,100,100,100,80,50,100,80,50,80,80,80,80,100,100,100,100,150,150,100,100,100,100,100,100,100,100,100,100,150,200,80,80,80,100,100,100,100,100,150,150,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,150,150,100,100,100,100,100,100,100,100,100,100,150,200,80,80,80,100,100,100,100,100,150,150,100,100,100,100,100,100,100,100,100,100,100,100,100,60,80,60,80,80,80,80,80,80,60,80,60,80,80,80,80,80,60,80,60,80,80,80,80,80,80,100,100,100,100,100,100,100};
 
 int melody[] = {
-  NOTE_D5,-4, NOTE_E5,-4, NOTE_A4,4, //1
+  NOTE_D5,-4, NOTE_E5,-4, NOTE_A4,4, 
   NOTE_E5,-4, NOTE_FS5,-4, NOTE_A5,16, NOTE_G5,16, NOTE_FS5,8,
   NOTE_D5,-4, NOTE_E5,-4, NOTE_A4,2,
   NOTE_A4,16, NOTE_A4,16, NOTE_B4,16, NOTE_D5,8, NOTE_D5,16,
-  NOTE_D5,-4, NOTE_E5,-4, NOTE_A4,4, //repeat from 1
+  NOTE_D5,-4, NOTE_E5,-4, NOTE_A4,4, 
   NOTE_E5,-4, NOTE_FS5,-4, NOTE_A5,16, NOTE_G5,16, NOTE_FS5,8,
   NOTE_D5,-4, NOTE_E5,-4, NOTE_A4,2,
   NOTE_A4,16, NOTE_A4,16, NOTE_B4,16, NOTE_D5,8, NOTE_D5,16,
@@ -417,11 +418,9 @@ void loop()
   else if (button_state_4) {
   	buttons = 4;
   }
-  if (button_state_1 && button_state_2 && button_state_3 && button_state_4 ){
-  	buttons = 0;
-  }
+  
   switch (buttons) {
-  case 1:
+  /*case 1:
     for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
       divider = melody[thisNote + 1];
       if (divider > 0) {
@@ -462,7 +461,7 @@ void loop()
     
     buttons = 0; 
     noTone(buzzer);
-    break;
+    break;*/
   case 3:
     for (int nota = 0; nota < 156; nota++) {
 
@@ -482,6 +481,8 @@ void loop()
     secondSection();
     thirdSection();
     thirdSection();
+    buttons = 0;
+    noTone(buzzer);
     break;
   }
 }
