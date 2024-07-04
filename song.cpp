@@ -1,3 +1,4 @@
+otimize este codigo para que consiga funcionar no arduino sem ultrapassar o limite de memoria ram:
 //made by ~ Henrique
 const int C2 = 65;
 const int Db2 = 69;
@@ -59,32 +60,34 @@ const int Ab6 = 1661;
 const int AA6 = 1760;
 const int Bb6 = 1865;
 const int B6 = 1976;
-int buzzer = 6;
 
-
+ 
+const int buzzerPin = 8;
+const int ledPin1 = 12;
+const int ledPin2 = 13;
  
 int counter = 0;
 void beep(int note, int duration)
 {
   //Play tone on buzzerPin
-  tone(buzzer, note, duration);
+  tone(buzzerPin, note, duration);
  
  
   //Play different LED depending on value of 'counter'
   if(counter % 2 == 0)
   {
-    
+    digitalWrite(ledPin1, HIGH);
     delay(duration);
-    
+    digitalWrite(ledPin1, LOW);
   }else
   {
-    
+    digitalWrite(ledPin2, HIGH);
     delay(duration);
-    
+    digitalWrite(ledPin2, LOW);
   }
  
   //Stop tone on buzzerPin
-  noTone(buzzer);
+  noTone(buzzerPin);
  
   delay(50);
  
@@ -293,7 +296,7 @@ void thirdSection()
 #define NOTE_DS8 4978
 #define REST      0
 int tempo = 114;
-
+int buzzer = 6;
 int button1 = 2;
 int button2 = 3;
 int button3 = 4;
@@ -479,8 +482,6 @@ void loop()
     secondSection();
     thirdSection();
     thirdSection();
-    buttons = 0;
-    noTone(buzzer);
     break;
   }
 }
